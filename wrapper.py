@@ -1,42 +1,34 @@
-import random
 import aiohttp
-
 __api__ = "https://api.filmler.fun/api/"
+
+class FilmlerPy(object):
+    class api:
+        async def Al(uri):
+            async with aiohttp.ClientSession() as session:
+                async with session.get(f"{__api__}{uri.replace(' ', '+')}") as res:
+                    return await res.json()
+
 class Wrapper(object):
-    class Random(object):
-        async def Film(self):
-            async with aiohttp.ClientSession() as session:
-                async with session.get(f"{__api__}rastgele/film") as res:
-                    return await res.json()
+    class random:
+        async def Film():
+            return await FilmlerPy().api.Al("rastgele/film")
 
-        async def Dizi(self):
-            async with aiohttp.ClientSession() as session:
-                async with session.get(f"{__api__}rastgele/dizi") as res:
-                    return await res.json()
+        async def Dizi():
+            return await FilmlerPy().api.Al("rastgele/dizi")
 
-    class Soz(object):
-        async def Tur(self, deger: str = random.choice(["film", "anime", "tv"])):
-            async with aiohttp.ClientSession() as session:
-                async with session.get(f"{__api__}soz/tur/{deger}") as res:
-                    return await res.json()
+        async def Soz():
+            return await FilmlerPy().api.Al("soz/rastgele")
 
-        async def Ad(self, deger: str = "matrix"):
-            async with aiohttp.ClientSession() as session:
-                async with session.get(f"{__api__}soz/ad/{deger}") as res:
-                    return await res.json()
+    class soz:
+        async def Tur(deger: str = "film"])):
+            return await FilmlerPy().api.Al(f"soz/tur/{deger}")
 
-        async def Random(self):
-            async with aiohttp.ClientSession() as session:
-                async with session.get(f"{__api__}soz/rastgele") as res:
-                    return await res.json()
+        async def Ad(deger: str = "matrix"):
+            return await FilmlerPy().api.Al(f"soz/ad/{deger}")
 
     async def Ara(self, deger: str):
-        async with aiohttp.ClientSession() as session:
-            async with session.get(f"{__api__}ara/{deger.replace(' ', '+')}") as res:
-                return await res.json()
+        return await FilmlerPy().api.Al(f"ara/{deger}")
 
     async def Trend(self):
-        async with aiohttp.ClientSession() as session:
-            async with session.get(f"{__api__}trend") as res:
-                result = await res.json()
-                return result["trend"].split(",")
+        result = await FilmlerPy().api.Al("trend")
+        return result["trend"].split(",")
