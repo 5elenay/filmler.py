@@ -2,8 +2,8 @@ import asyncio
 from wrapper import Wrapper
 
 async def main():
-    soz = Wrapper().Soz()
-    print(await soz.Tur()) # film/anime/tv
+    wrapper = Wrapper()
+    print(await wrapper.soz.Tur("anime")) # anime/tv/film
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
