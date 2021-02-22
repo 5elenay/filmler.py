@@ -2,8 +2,8 @@ import asyncio
 from wrapper import Wrapper
 
 async def main():
-    random = Wrapper().Random()
-    print(await random.Film())
+    wrapper = Wrapper()
+    print(await wrapper.random.Film())
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
