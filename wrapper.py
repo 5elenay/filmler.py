@@ -20,7 +20,7 @@ class Wrapper(object):
             return await FilmlerPy().api.Al("soz/rastgele")
 
     class soz:
-        async def Tur(deger: str = "film"])):
+        async def Tur(deger: str = "film"):
             return await FilmlerPy().api.Al(f"soz/tur/{deger}")
 
         async def Ad(deger: str = "matrix"):
